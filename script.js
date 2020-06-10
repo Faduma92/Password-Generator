@@ -26,6 +26,8 @@ const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47).concat(
 characterAmountNumber.addEventListener('input', syncCharacterAmount)
 characterAmountRange.addEventListener('input', syncCharacterAmount)
 
+// Prevent page from refreshing, and display generated password in display`
+
 form.addEventListener('submit', e => {
     e.preventDefault()
     const characterAmount = characterAmountNumber.value
@@ -37,12 +39,16 @@ form.addEventListener('submit', e => {
     passwordDisplay.innerText = password
 })
 
+// Generate the password with if statements based on input
+
 function generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols) {
    let charCodes = LOWERCASE_CHAR_CODES
 
-   if (includeUppercase) charCodes = charCodes.concat(includeUppercase)
-   if (includeNumbers) charCodes = charCodes.concat(includeNumbers)
-   if (includeSymbols) charCodes = charCodes.concat(includeSymbols)
+   if (includeUppercase) charCodes = charCodes.concat(UPPERCASE_CHAR_CODES)
+   if (includeNumbers) charCodes = charCodes.concat(NUMBER_CHAR_CODES)
+   if (includeSymbols) charCodes = charCodes.concat(SYMBOL_CHAR_CODES)
+   
+  
 
    const passwordCharacters = []
    for (let i = 0; i < characterAmount; i++) {
@@ -53,6 +59,8 @@ function generatePassword(characterAmount, includeUppercase, includeNumbers, inc
    return passwordCharacters.join('')
 }
 
+// Generate the arrays
+
 function arrayFromLowToHigh(low, high) {
     const array = []
     for (let i = low; i<= high; i++) {
@@ -61,9 +69,20 @@ function arrayFromLowToHigh(low, high) {
     return array 
 }
 
+//  Slider and Number input are synced
+
 function syncCharacterAmount(e) {
     const value = e.target.value
     characterAmountNumber.value = value
     characterAmountRange.value = value
 }
 
+// Copy generated password
+
+function myFunction() {
+    var copyText = document.getElementById("password");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    alert("Copied the text: " + copyText.value);
+  }
