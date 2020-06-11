@@ -40,14 +40,17 @@ form.addEventListener('submit', e => {
 })
 
 // Generate the password with if statements based on input
-
+ alert('Please include atleast one option.')
 function generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols) {
    let charCodes = LOWERCASE_CHAR_CODES
 
+  
    if (includeUppercase) charCodes = charCodes.concat(UPPERCASE_CHAR_CODES)
    if (includeNumbers) charCodes = charCodes.concat(NUMBER_CHAR_CODES)
    if (includeSymbols) charCodes = charCodes.concat(SYMBOL_CHAR_CODES)
    
+    
+  
   
 
    const passwordCharacters = []
