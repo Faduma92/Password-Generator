@@ -1,7 +1,7 @@
 # Password Generator
 
 **Link to the deployed GitHub pages URL**
-
+https://faduma92.github.io/Password-Generator/ 
 
 **Screenshot of the web application**
 ![screenshot](screenshot1.png)
